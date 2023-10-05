@@ -10,6 +10,7 @@ import csv
 
 results_directory = r"C:\Users\lawashburn\Documents\EndoGeniusDistributions\version_assessment_output\EndoGenius_v1.0.2\pt4_InnoWizard\rawDB_rawMS\2021_0817_CoG_1"
 formatted_spectra_path = r"D:\EndoGenius_Updates\v1.0.3_SLbuild\pt01_new_rawfile_formatting\output\2021_0817_CoG_1_formatted_RT_old.txt"
+output_directory = r"D:\EndoGenius_Updates\v1.0.3_SLbuild\pt02_output"
 fragment_error = 0.02
 
 backslash_index1 = results_directory.rfind('\\')
@@ -83,3 +84,8 @@ individual_library = pd.DataFrame(
      'peak count': peaks_count_log,
      'peak list':peak_list_log
     })
+
+output_path = output_directory + '\\spectral_library_' + tissue_type + '.csv'
+with open(output_path,'w',newline='') as filec:
+        writerc = csv.writer(filec)
+        individual_library.to_csv(filec,index=False)
